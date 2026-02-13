@@ -1,215 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
+<title>Python TYPE C</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Class 11 TYPE C – Computer Science with Python</title>
 
 <style>
-/* ===== LOADER ===== */
-#loader{
-  position:fixed;
-  inset:0;
-  background:linear-gradient(135deg,#667eea,#764ba2);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  color:white;
-  font-size:18px;
-}
-.snake-track{
-  width:80%;
-  max-width:320px;
-  height:12px;
-  background:rgba(255,255,255,.3);
-  border-radius:10px;
-  overflow:hidden;
-  margin-bottom:15px;
-}
-.snake{
-  width:60px;
-  height:100%;
-  background:linear-gradient(90deg,#00ff99,#00ccff,#00ff99);
-  border-radius:10px;
-  animation:snakeMove 1.2s linear infinite;
-}
-@keyframes snakeMove{
-  from{transform:translateX(-70px)}
-  to{transform:translateX(360px)}
-}
-
-/* ===== PAGE ===== */
 body{
   margin:0;
-  font-family:Arial, sans-serif;
-  background:linear-gradient(135deg,#667eea,#764ba2);
-}
-.container{
-  max-width:900px;
-  margin:auto;
-  padding:20px;
-}
-h1{
-  text-align:center;
+  font-family: 'Arial Black', Gadget, sans-serif;
+  background:linear-gradient(135deg, #ff4e50, #f9d423);
+  overflow-x:hidden;
   color:white;
-  margin-bottom:30px;
 }
-.chapter-card{
-  background:white;
-  border-radius:14px;
-  padding:15px;
-  margin-bottom:15px;
-  box-shadow:0 8px 18px rgba(0,0,0,.15);
+/* 💣 INTRO */
+#intro{
+  position:fixed;width:100%;height:100vh;background:black;
+  display:flex;justify-content:center;align-items:center;flex-direction:column;z-index:9999;
 }
-.chapter-title{
-  font-weight:bold;
-  margin-bottom:6px;
-}
-.stats{
-  font-size:14px;
-  color:#555;
-  margin-bottom:10px;
-}
-.btn-group{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-.view-btn{
-  background:#03a9f4;
-  color:white;
-  padding:10px 18px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
-}
-.download-btn{
-  background:#4caf50;
-  color:white;
-  padding:10px 18px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
-}
-footer{
-  text-align:center;
-  color:white;
-  margin-top:40px;
-  font-size:14px;
+.bomb{font-size:70px;animation:shake 0.6s infinite;}
+@keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-5px)}100%{transform:translateX(0)}}
+.flash{position:absolute;width:100%;height:100%;background:white;opacity:0;}
+.container{max-width:900px;margin:auto;padding:20px;}
+h1{text-align:center;margin-bottom:30px;font-weight:bold;text-shadow:2px 2px 5px #000;}
+.card{background:white;border-radius:14px;padding:20px;margin-bottom:18px;box-shadow:0 8px 18px rgba(0,0,0,.15);opacity:0;transform:translateY(-80px);color:black;overflow:hidden;}
+.card.show{animation:drop 0.6s ease forwards;}
+@keyframes drop{to{opacity:1;transform:translateY(0);}}
+.chapter-title{font-size:20px;font-weight:bold;color:black;margin-bottom:10px;}
+.stats{font-size:14px;margin-bottom:8px;display:none;}
+.btn{padding:10px;border-radius:8px;color:white;text-decoration:none;font-weight:bold;margin-right:8px;display:inline-block;box-sizing:border-box;}
+.view{background:#03a9f4;}
+.download{background:#4caf50;}
+#resetBtn{display:none;background:red;color:white;border:none;padding:10px 14px;border-radius:6px;margin-top:15px;cursor:pointer;}
+footer{text-align:center;margin-top:30px;}
+@media(max-width:600px){
+  .bomb{font-size:110px;}
+  .container{padding:12px;}
+  .chapter-title{font-size:16px;}
+  .card{padding:15px;}
+  .btn{display:block;width:100%;margin:6px 0;text-align:center;}
 }
 </style>
 </head>
-
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-  <div class="snake-track"><div class="snake"></div></div>
-  Loading Python Solutions…
+<div id="intro">
+  <div class="bomb">💣</div>
+  <div style="margin-top:15px;">Preparing Topics...</div>
+  <div class="flash" id="flash"></div>
 </div>
 
 <div class="container">
-<h1>Class 11 – Computer Science with Python<br>TYPE C Solutions</h1>
-
-<!-- CHAPTER 6 -->
-<div class="chapter-card">
-  <div class="chapter-title">Chapter 6: Python Fundamentals</div>
-  <div class="stats">👁 <span id="C_v6">0</span> | ⬇ <span id="C_d6">0</span></div>
-  <div class="btn-group">
-    <a class="view-btn" href="11pdfsC/pythonch6c.pdf" target="_blank" onclick="inc('C_v6')">View</a>
-    <a class="download-btn" href="11pdfsC/pythonch6c.pdf" target="_blank" onclick="inc('C_d6')">Download</a>
-  </div>
-</div>
-
-<!-- CHAPTER 7 -->
-<div class="chapter-card">
-  <div class="chapter-title">Chapter 7: Data Handling</div>
-  <div class="stats">👁 <span id="C_v7">0</span> | ⬇ <span id="C_d7">0</span></div>
-  <div class="btn-group">
-    <a class="view-btn" href="11pdfsC/pythonch7c.pdf" target="_blank" onclick="inc('C_v7')">View</a>
-    <a class="download-btn" href="11pdfsC/pythonch7c.pdf" target="_blank" onclick="inc('C_d7')">Download</a>
-  </div>
-</div>
-
-<!-- CHAPTER 8 -->
-<div class="chapter-card">
-  <div class="chapter-title">Chapter 8: Introduction to Python Modules</div>
-  <div class="stats">👁 <span id="C_v8">0</span> | ⬇ <span id="C_d8">0</span></div>
-  <div class="btn-group">
-    <a class="view-btn" href="11pdfsC/pythonch8c.pdf" target="_blank" onclick="inc('C_v8')">View</a>
-    <a class="download-btn" href="11pdfsC/pythonch8c.pdf" target="_blank" onclick="inc('C_d8')">Download</a>
-  </div>
-</div>
-
-<!-- CHAPTER 9 -->
-<div class="chapter-card">
-  <div class="chapter-title">Chapter 9: Flow of Control</div>
-  <div class="stats">👁 <span id="C_v9">0</span> | ⬇ <span id="C_d9">0</span></div>
-  <div class="btn-group">
-    <a class="view-btn" href="11pdfsC/pythonch9c.pdf" target="_blank" onclick="inc('C_v9')">View</a>
-    <a class="download-btn" href="11pdfsC/pythonch9c.pdf" target="_blank" onclick="inc('C_d9')">Download</a>
-  </div>
-</div>
-
-<!-- CHAPTER 10 -->
-<div class="chapter-card">
-  <div class="chapter-title">Chapter 10: String Manipulation</div>
-  <div class="stats">👁 <span id="C_v10">0</span> | ⬇ <span id="C_d10">0</span></div>
-  <div class="btn-group">
-    <a class="view-btn" href="11pdfsC/pythonch10c.pdf" target="_blank" onclick="inc('C_v10')">View</a>
-    <a class="download-btn" href="11pdfsC/pythonch10c.pdf" target="_blank" onclick="inc('C_d10')">Download</a>
-  </div>
-</div>
-
-<!-- CHAPTER 11 -->
-<div class="chapter-card">
-  <div class="chapter-title">Chapter 11: List Manipulation</div>
-  <div class="stats">👁 <span id="C_v11">0</span> | ⬇ <span id="C_d11">0</span></div>
-  <div class="btn-group">
-    <a class="view-btn" href="11pdfsC/pythonch11c.pdf" target="_blank" onclick="inc('C_v11')">View</a>
-    <a class="download-btn" href="11pdfsC/pythonch11c.pdf" target="_blank" onclick="inc('C_d11')">Download</a>
-  </div>
-</div>
-
-<!-- CHAPTER 12 -->
-<div class="chapter-card">
-  <div class="chapter-title">Chapter 12: Tuples</div>
-  <div class="stats">👁 <span id="C_v12">0</span> | ⬇ <span id="C_d12">0</span></div>
-  <div class="btn-group">
-    <a class="view-btn" href="11pdfsC/pythonch12c.pdf" target="_blank" onclick="inc('C_v12')">View</a>
-    <a class="download-btn" href="11pdfsC/pythonch12c.pdf" target="_blank" onclick="inc('C_d12')">Download</a>
-  </div>
-</div>
-
-<!-- CHAPTER 13 -->
-<div class="chapter-card">
-  <div class="chapter-title">Chapter 13: Dictionary</div>
-  <div class="stats">👁 <span id="C_v13">0</span> | ⬇ <span id="C_d13">0</span></div>
-  <div class="btn-group">
-    <a class="view-btn" href="11pdfsC/pythonch13c.pdf" target="_blank" onclick="inc('C_v13')">View</a>
-    <a class="download-btn" href="11pdfsC/pythonch13c.pdf" target="_blank" onclick="inc('C_d13')">Download</a>
-  </div>
-</div>
-
-<footer>Author: <b>J. Pughazhendhi</b></footer>
+<h1>Class 11 – Python TYPE C</h1>
+<div id="chapters"></div>
+<button id="resetBtn" onclick="resetAllCounts()">Reset Counts</button>
+<footer>Author: J. Pughazhendhi</footer>
 </div>
 
 <script>
-function inc(id){
-  let v = Number(localStorage.getItem(id)) || 0;
-  v++;
-  localStorage.setItem(id, v);
-  document.getElementById(id).innerText = v;
-}
-window.onload = () => {
-  document.querySelectorAll(".stats span").forEach(s=>{
-    s.innerText = localStorage.getItem(s.id) || 0;
-  });
-  setTimeout(()=>{document.getElementById("loader").style.display="none"},800);
-};
-</script>
+setTimeout(()=>{
+  document.querySelector(".bomb").innerText="💥";
+  const flash=document.getElementById("flash"); flash.style.opacity="1"; flash.style.transition="opacity 0.4s";
+  setTimeout(()=>document.getElementById("intro").style.display="none",500);
+},2000);
 
+const secretKey="accessC";
+
+function enterSecretAccess(password){
+  if(password==="1234"){localStorage.setItem(secretKey,"true"); showSecretElements(); updateAllStats();}
+  else{alert("Wrong password");}
+}
+
+function showSecretElements(){
+  document.getElementById("resetBtn").style.display="inline-block";
+  document.querySelectorAll(".stats").forEach(s=>s.style.display="block");
+}
+
+if(localStorage.getItem(secretKey)==="true"){showSecretElements();}
+
+const chapters=[
+  [6,"Python Fundamentals","11pdfsC/pythonch6c.pdf"],
+  [7,"Data Handling","11pdfsC/pythonch7c.pdf"],
+  [8,"Introduction to Python Modules","11pdfsC/pythonch8c.pdf"],
+  [9,"Flow of Control","11pdfsC/pythonch9c.pdf"],
+  [10,"String Manipulation","11pdfsC/pythonch10c.pdf"],
+  [11,"List Manipulation","11pdfsC/pythonch11c.pdf"],
+  [12,"Tuples","11pdfsC/pythonch12c.pdf"],
+  [13,"Dictionary","11pdfsC/pythonch13c.pdf"]
+];
+
+const container=document.getElementById("chapters");
+chapters.forEach((c,index)=>{
+  const card=document.createElement("div");
+  card.className="card"; card.id=`chapter${c[0]}`;
+  card.innerHTML=`<div class="chapter-title">Chapter ${c[0]} – ${c[1]}</div>
+  <div class="stats">👁 0 | ⬇ 0</div>
+  <a class="btn view" href="${c[2]}" target="_blank" onclick="updateCount(${c[0]},'view')">View</a>
+  <a class="btn download" href="${c[2]}" download onclick="updateCount(${c[0]},'download')">Download</a>`;
+  container.appendChild(card);
+  setTimeout(()=>card.classList.add("show"),2500+(index*300));
+});
+
+function updateCount(chapter,type){
+  const key=`count_${chapter}_${type}`;
+  let current=localStorage.getItem(key);
+  current=current?parseInt(current)+1:1;
+  localStorage.setItem(key,current);
+  if(localStorage.getItem(secretKey)==="true"){updateStats(chapter);}
+}
+function updateStats(chapter){
+  const card=document.getElementById(`chapter${chapter}`);
+  if(card){ const stats=card.querySelector(".stats");
+  stats.innerText=`👁 ${localStorage.getItem(`count_${chapter}_view`)||0} | ⬇ ${localStorage.getItem(`count_${chapter}_download`)||0}`;}
+}
+function updateAllStats(){chapters.forEach(c=>updateStats(c[0]));}
+function resetAllCounts(){if(confirm("Reset all counts?")){
+  chapters.forEach(c=>{localStorage.removeItem(`count_${c[0]}_view`); localStorage.removeItem(`count_${c[0]}_download`);});
+  localStorage.removeItem(secretKey);
+  location.reload();
+}}
+</script>
 </body>
 </html>
