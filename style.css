@@ -1,0 +1,266 @@
+/* ==============================
+   GLOBAL RESET
+============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+  text-align: center;
+}
+
+/* ==============================
+   HEADER / HERO
+============================== */
+.hero {
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  color: white;
+  padding: 50px 20px;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.hero h2 {
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+.hero.small {
+  padding: 30px;
+}
+
+/* ==============================
+   NAVIGATION
+============================== */
+nav {
+  background: #0f172a;
+  padding: 12px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ==============================
+   HOMEPAGE BUTTONS (Class 11 / 12)
+============================== */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 40px 20px;
+}
+
+.btn {
+  padding: 22px;
+  border-radius: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Homepage Buttons Colors */
+.class11 {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.class12 {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+}
+
+/* Hover effect */
+.btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ==============================
+   TYPE BUTTONS (TYPE A / B / C)
+============================== */
+.type-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 50px 20px;
+}
+
+.type-buttons .btn {
+  padding: 25px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 20px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* TYPE A */
+.typeA {
+  background: linear-gradient(45deg, #3b82f6, #06b6d4, #0ea5e9);
+}
+.typeA:hover {
+  transform: translateY(-10px) rotate(-2deg) scale(1.05);
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.5);
+  filter: brightness(1.1);
+  background-position: 100% 50%;
+}
+
+/* TYPE B */
+.typeB {
+  background: linear-gradient(45deg, #f43f5e, #ec4899, #f472b6);
+}
+.typeB:hover {
+  transform: translateY(-10px) rotate(2deg) scale(1.05);
+  box-shadow: 0 15px 35px rgba(244, 63, 94, 0.5);
+  filter: brightness(1.1);
+  background-position: 100% 50%;
+}
+
+/* TYPE C */
+.typeC {
+  background: linear-gradient(135deg, #facc15, #fbbf24, #f59e0b);
+  color: #111827;
+  border: 2px solid #eab308;
+}
+.typeC:hover {
+  transform: translateY(-10px) rotate(-1deg) scale(1.05);
+  box-shadow: 0 15px 35px rgba(250, 204, 21, 0.7);
+  filter: brightness(1.1);
+  background-position: 100% 50%;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+footer {
+  background: #0f172a;
+  color: white;
+  padding: 15px;
+  margin-top: 30px;
+}
+
+/* ==============================
+   MEDIA QUERIES (Mobile Responsive)
+============================== */
+@media (max-width: 600px) {
+  .buttons,
+  .type-buttons {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .type-buttons .btn,
+  .buttons .btn {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.2rem;
+  }
+
+  /* Tap effect for mobile */
+  .type-buttons .btn:active,
+  .buttons .btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+}
+
+/* Desktop layout */
+@media (min-width: 768px) {
+  .type-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .type-buttons .btn {
+    width: 200px;
+  }
+
+  .buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .buttons .btn {
+    width: 280px;
+  }
+}
+.chapter-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.chapter-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* Individual chapter colors */
+.color1 { background: linear-gradient(135deg, #f97316, #fb923c); } /* orange */
+.color2 { background: linear-gradient(135deg, #3b82f6, #60a5fa); } /* blue */
+.color3 { background: linear-gradient(135deg, #10b981, #34d399); } /* green */
+.color4 { background: linear-gradient(135deg, #8b5cf6, #a78bfa); } /* purple */
+.color5 { background: linear-gradient(135deg, #f43f5e, #f472b6); } /* pink */
+.color6 { background: linear-gradient(135deg, #facc15, #fef08a); } /* yellow */
+.color7 { background: linear-gradient(135deg, #06b6d4, #22d3ee); } /* cyan */
+.color8 { background: linear-gradient(135deg, #ec4899, #f9a8d4); } /* rose */
+
+/* Chapter name & download */
+.chapter-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.download-btn {
+  background: rgba(255,255,255,0.3);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #111827;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.download-btn:hover {
+  background: rgba(255,255,255,0.5);
+  transform: scale(1.05);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .chapter-card {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  .download-btn {
+    width: 50%;
+  }
+}

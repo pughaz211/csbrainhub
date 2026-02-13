@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 11 TYPE C – Computer Science with Python</title>
+
+<style>
+/* ===== LOADER ===== */
+#loader{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  color:white;
+  font-size:18px;
+}
+.snake-track{
+  width:80%;
+  max-width:320px;
+  height:12px;
+  background:rgba(255,255,255,.3);
+  border-radius:10px;
+  overflow:hidden;
+  margin-bottom:15px;
+}
+.snake{
+  width:60px;
+  height:100%;
+  background:linear-gradient(90deg,#00ff99,#00ccff,#00ff99);
+  border-radius:10px;
+  animation:snakeMove 1.2s linear infinite;
+}
+@keyframes snakeMove{
+  from{transform:translateX(-70px)}
+  to{transform:translateX(360px)}
+}
+
+/* ===== PAGE ===== */
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+}
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+h1{
+  text-align:center;
+  color:white;
+  margin-bottom:30px;
+}
+.chapter-card{
+  background:white;
+  border-radius:14px;
+  padding:15px;
+  margin-bottom:15px;
+  box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+.chapter-title{
+  font-weight:bold;
+  margin-bottom:6px;
+}
+.stats{
+  font-size:14px;
+  color:#555;
+  margin-bottom:10px;
+}
+.btn-group{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.view-btn{
+  background:#03a9f4;
+  color:white;
+  padding:10px 18px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+}
+.download-btn{
+  background:#4caf50;
+  color:white;
+  padding:10px 18px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+}
+footer{
+  text-align:center;
+  color:white;
+  margin-top:40px;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="snake-track"><div class="snake"></div></div>
+  Loading Python Solutions…
+</div>
+
+<div class="container">
+<h1>Class 11 – Computer Science with Python<br>TYPE C Solutions</h1>
+
+<!-- CHAPTER 6 -->
+<div class="chapter-card">
+  <div class="chapter-title">Chapter 6: Python Fundamentals</div>
+  <div class="stats">👁 <span id="C_v6">0</span> | ⬇ <span id="C_d6">0</span></div>
+  <div class="btn-group">
+    <a class="view-btn" href="11pdfsC/pythonch6c.pdf" target="_blank" onclick="inc('C_v6')">View</a>
+    <a class="download-btn" href="11pdfsC/pythonch6c.pdf" target="_blank" onclick="inc('C_d6')">Download</a>
+  </div>
+</div>
+
+<!-- CHAPTER 7 -->
+<div class="chapter-card">
+  <div class="chapter-title">Chapter 7: Data Handling</div>
+  <div class="stats">👁 <span id="C_v7">0</span> | ⬇ <span id="C_d7">0</span></div>
+  <div class="btn-group">
+    <a class="view-btn" href="11pdfsC/pythonch7c.pdf" target="_blank" onclick="inc('C_v7')">View</a>
+    <a class="download-btn" href="11pdfsC/pythonch7c.pdf" target="_blank" onclick="inc('C_d7')">Download</a>
+  </div>
+</div>
+
+<!-- CHAPTER 8 -->
+<div class="chapter-card">
+  <div class="chapter-title">Chapter 8: Introduction to Python Modules</div>
+  <div class="stats">👁 <span id="C_v8">0</span> | ⬇ <span id="C_d8">0</span></div>
+  <div class="btn-group">
+    <a class="view-btn" href="11pdfsC/pythonch8c.pdf" target="_blank" onclick="inc('C_v8')">View</a>
+    <a class="download-btn" href="11pdfsC/pythonch8c.pdf" target="_blank" onclick="inc('C_d8')">Download</a>
+  </div>
+</div>
+
+<!-- CHAPTER 9 -->
+<div class="chapter-card">
+  <div class="chapter-title">Chapter 9: Flow of Control</div>
+  <div class="stats">👁 <span id="C_v9">0</span> | ⬇ <span id="C_d9">0</span></div>
+  <div class="btn-group">
+    <a class="view-btn" href="11pdfsC/pythonch9c.pdf" target="_blank" onclick="inc('C_v9')">View</a>
+    <a class="download-btn" href="11pdfsC/pythonch9c.pdf" target="_blank" onclick="inc('C_d9')">Download</a>
+  </div>
+</div>
+
+<!-- CHAPTER 10 -->
+<div class="chapter-card">
+  <div class="chapter-title">Chapter 10: String Manipulation</div>
+  <div class="stats">👁 <span id="C_v10">0</span> | ⬇ <span id="C_d10">0</span></div>
+  <div class="btn-group">
+    <a class="view-btn" href="11pdfsC/pythonch10c.pdf" target="_blank" onclick="inc('C_v10')">View</a>
+    <a class="download-btn" href="11pdfsC/pythonch10c.pdf" target="_blank" onclick="inc('C_d10')">Download</a>
+  </div>
+</div>
+
+<!-- CHAPTER 11 -->
+<div class="chapter-card">
+  <div class="chapter-title">Chapter 11: List Manipulation</div>
+  <div class="stats">👁 <span id="C_v11">0</span> | ⬇ <span id="C_d11">0</span></div>
+  <div class="btn-group">
+    <a class="view-btn" href="11pdfsC/pythonch11c.pdf" target="_blank" onclick="inc('C_v11')">View</a>
+    <a class="download-btn" href="11pdfsC/pythonch11c.pdf" target="_blank" onclick="inc('C_d11')">Download</a>
+  </div>
+</div>
+
+<!-- CHAPTER 12 -->
+<div class="chapter-card">
+  <div class="chapter-title">Chapter 12: Tuples</div>
+  <div class="stats">👁 <span id="C_v12">0</span> | ⬇ <span id="C_d12">0</span></div>
+  <div class="btn-group">
+    <a class="view-btn" href="11pdfsC/pythonch12c.pdf" target="_blank" onclick="inc('C_v12')">View</a>
+    <a class="download-btn" href="11pdfsC/pythonch12c.pdf" target="_blank" onclick="inc('C_d12')">Download</a>
+  </div>
+</div>
+
+<!-- CHAPTER 13 -->
+<div class="chapter-card">
+  <div class="chapter-title">Chapter 13: Dictionary</div>
+  <div class="stats">👁 <span id="C_v13">0</span> | ⬇ <span id="C_d13">0</span></div>
+  <div class="btn-group">
+    <a class="view-btn" href="11pdfsC/pythonch13c.pdf" target="_blank" onclick="inc('C_v13')">View</a>
+    <a class="download-btn" href="11pdfsC/pythonch13c.pdf" target="_blank" onclick="inc('C_d13')">Download</a>
+  </div>
+</div>
+
+<footer>Author: <b>J. Pughazhendhi</b></footer>
+</div>
+
+<script>
+function inc(id){
+  let v = Number(localStorage.getItem(id)) || 0;
+  v++;
+  localStorage.setItem(id, v);
+  document.getElementById(id).innerText = v;
+}
+window.onload = () => {
+  document.querySelectorAll(".stats span").forEach(s=>{
+    s.innerText = localStorage.getItem(s.id) || 0;
+  });
+  setTimeout(()=>{document.getElementById("loader").style.display="none"},800);
+};
+</script>
+
+</body>
+</html>

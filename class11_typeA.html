@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Python TYPE A</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  font-family: 'Arial Black', Gadget, sans-serif;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  overflow-x:hidden;
+  color:white;
+}
+
+/* 💣 INTRO */
+#intro{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+}
+.bomb{font-size:60px;animation:shake 0.6s infinite;}
+@keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-5px)}100%{transform:translateX(0)}}
+.flash{position:absolute;width:100%;height:100%;background:white;opacity:0;}
+
+/* PAGE */
+.container{max-width:900px;margin:auto;padding:20px;}
+h1{text-align:center;color:white;margin-bottom:30px;font-weight:bold;text-shadow:2px 2px 5px #000;}
+.card{
+  background:white;
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:15px;
+  box-shadow:0 8px 18px rgba(0,0,0,.15);
+  opacity:0;
+  transform:translateY(-80px);
+  color:black;
+}
+.card.show{animation:drop 0.6s ease forwards;}
+@keyframes drop{to{opacity:1;transform:translateY(0);}}
+.chapter-title{
+  font-size:20px;
+  font-weight:bold;
+  color:black;
+  margin-bottom:10px;
+}
+.stats{
+  font-size:14px;
+  margin-bottom:8px;
+  display:none;
+}
+.btn{
+  padding:8px 15px;
+  border-radius:8px;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  margin-right:8px;
+}
+.view{background:#03a9f4;}
+.download{background:#4caf50;}
+#resetBtn{display:none;background:red;color:white;border:none;padding:8px 12px;border-radius:6px;margin-top:15px;cursor:pointer;}
+footer{text-align:center;color:white;margin-top:30px;}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media(max-width:600px){
+  .bomb{font-size:100px;}
+  .container{padding:10px;}
+  .chapter-title{font-size:16px;}
+  .card{padding:12px;}
+  .btn{display:block;width:100%;margin:5px 0;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- 💣 INTRO -->
+<div id="intro">
+  <div class="bomb">💣</div>
+  <div style="margin-top:10px;">Preparing Topics...</div>
+  <div class="flash" id="flash"></div>
+</div>
+
+<div class="container">
+<h1>Class 11 – Python TYPE A</h1>
+<div id="chapters"></div>
+
+<!-- Reset button (secret access only) -->
+<button id="resetBtn" onclick="resetAllCounts()">Reset Counts</button>
+
+<footer>Author: J. Pughazhendhi</footer>
+</div>
+
+<script>
+/* ===== LOADER & EXPLOSION ===== */
+setTimeout(()=>{
+  document.querySelector(".bomb").innerText="💥";
+  const flash=document.getElementById("flash");
+  flash.style.opacity="1";
+  flash.style.transition="opacity 0.4s";
+  setTimeout(()=>document.getElementById("intro").style.display="none",500);
+},2000);
+
+/* ===== SECRET ACCESS ===== */
+const secretKey = "accessA";
+
+function enterSecretAccess(password){
+    if(password === "1234"){
+        localStorage.setItem(secretKey,"true");
+        showSecretElements();
+        updateAllStats();
+    } else {
+        alert("Wrong password");
+    }
+}
+
+function showSecretElements(){
+    document.getElementById("resetBtn").style.display="inline-block";
+    document.querySelectorAll(".stats").forEach(s=>s.style.display="block");
+}
+
+if(localStorage.getItem(secretKey) === "true"){
+    showSecretElements();
+}
+
+/* ===== CHAPTER LIST + PDF LINKS ===== */
+const chapters=[
+  [2,"Data Representation","11pdfsA/pythonch2a.pdf"],
+  [3,"Boolean Logic","11pdfsA/pythonch3a.pdf"],
+  [4,"Introduction to Problem Solving","11pdfsA/pythonch4a.pdf"],
+  [5,"Introduction to Python","11pdfsA/pythonch5a.pdf"],
+  [6,"Python Fundamentals","11pdfsA/pythonch6a.pdf"], // ✅ fixed link
+  [7,"Data Handling","11pdfsA/pythonch7a.pdf"],
+  [8,"Python Modules","11pdfsA/pythonch8a.pdf"],
+  [9,"Flow of Control","11pdfsA/pythonch9a.pdf"],
+  [10,"String Manipulation","11pdfsA/pythonch10a.pdf"],
+  [11,"List Manipulation","11pdfsA/pythonch11a.pdf"],
+  [12,"Tuples","11pdfsA/pythonch12a.pdf"],
+  [13,"Dictionary","11pdfsA/pythonch13a.pdf"]
+];
+
+const container=document.getElementById("chapters");
+
+chapters.forEach((c,index)=>{
+  const card=document.createElement("div");
+  card.className="card";
+  card.id = `chapter${c[0]}`;
+  
+  card.innerHTML=`
+  <div class="chapter-title">Chapter ${c[0]} – ${c[1]}</div>
+  <div class="stats">👁 0 | ⬇ 0</div>
+  <a class="btn view" href="${c[2]}" target="_blank" onclick="updateCount(${c[0]},'view')">View</a>
+  <a class="btn download" href="${c[2]}" download onclick="updateCount(${c[0]},'download')">Download</a>
+  `;
+  container.appendChild(card);
+  
+  setTimeout(()=>card.classList.add("show"),2500 + (index * 300));
+});
+
+/* ===== COUNT FUNCTIONS ===== */
+function updateCount(chapter,type){
+    const key = `count_${chapter}_${type}`;
+    let current = localStorage.getItem(key);
+    current = current ? parseInt(current)+1 : 1;
+    localStorage.setItem(key,current);
+    if(localStorage.getItem(secretKey) === "true"){
+        updateStats(chapter);
+    }
+}
+
+function updateStats(chapter){
+    const card = document.getElementById(`chapter${chapter}`);
+    if(card){
+        const stats = card.querySelector(".stats");
+        if(stats){
+            stats.innerText = `👁 ${localStorage.getItem(`count_${chapter}_view`) || 0} | ⬇ ${localStorage.getItem(`count_${chapter}_download`) || 0}`;
+        }
+    }
+}
+
+function updateAllStats(){
+    chapters.forEach(c=>{
+        updateStats(c[0]);
+    });
+}
+
+/* ===== RESET ===== */
+function resetAllCounts(){
+  if(confirm("Are you sure you want to reset all counts?")){
+    chapters.forEach(c=>{
+        localStorage.removeItem(`count_${c[0]}_view`);
+        localStorage.removeItem(`count_${c[0]}_download`);
+    });
+    localStorage.removeItem(secretKey);
+    alert("Secret access and counts reset. Refresh page to hide counts and reset button.");
+    location.reload();
+  }
+}
+</script>
+</body>
+</html>
