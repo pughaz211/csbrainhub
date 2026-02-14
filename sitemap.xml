@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://cs-class11-solutions.netlify.app/</loc>
+    <loc>https://csbrainhub.netlify.app/</loc>
   </url>
   <url>
-    <loc>https://cs-class11-solutions.netlify.app/class11.html</loc>
+    <loc>https://csbrainhub.netlify.app/class11.html</loc>
   </url>
   <url>
-    <loc>https://cs-class11-solutions.netlify.app/class12.html</loc>
+    <loc>https://csbrainhub.netlify.app/class12.html</loc>
   </url>
   <url>
-    <loc>https://cs-class11-solutions.netlify.app/class13.html</loc>
+    <loc>https://csbrainhub.netlify.app/class13.html</loc>
   </url>
+
 </urlset>
